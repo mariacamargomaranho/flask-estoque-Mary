@@ -3,6 +3,7 @@ import os
 import sys
 
 from flask import Flask, render_template
+from src.modulos import bootstrap
 
 
 def create_app(config_filename: str = 'config.dev.json'):
@@ -20,9 +21,11 @@ def create_app(config_filename: str = 'config.dev.json'):
 
     try:
         app.config.from_file(config_filename, load=json.load)
-        except FileNotFoundError:
+    except FileNotFoundError:
         app.logger.critical('Não existe o arquivo de configuração informado')
         sys.exit(1)
+
+    bootstrap.init_app(app)
 
     @app.route('/')
     @app.route('/index')
