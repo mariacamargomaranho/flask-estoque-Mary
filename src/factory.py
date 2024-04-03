@@ -3,7 +3,8 @@ import os
 import sys
 
 from flask import Flask, render_template
-from src.modulos import bootstrap, minify
+from src.modulos import bootstrap, minify, db
+from src.utils import existe_esquema
 
 
 def create_app(config_filename: str = 'config.dev.json'):
@@ -28,6 +29,12 @@ def create_app(config_filename: str = 'config.dev.json'):
     bootstrap.init_app(app)
     if app.config.get ('MINIFY', False):
         minify.init_app(app)
+    db.init_app(app)
+
+    with app.app_context():
+        if not existe_esquema(app):
+            app.logger.critical('Efetuar a migração/upgrade do banco')
+            sys.exit(1)
 
     @app.route('/')
     @app.route('/index')
