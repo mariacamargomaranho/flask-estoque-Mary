@@ -2,6 +2,8 @@
   "BOOTSTRAP_BOOTSWATCH_THEME": "pulse",
 
   "SQLALCHEMY_DATABASE_URI": "sqlite+pysqlite:///banco_de_dados.sqlite3",
-  "SQLITE_DB_NAME": "banco_de_dados.sqlite3"
+  "SQLITE_DB_NAME": "banco_de_dados.sqlite3",
+
+  "SEEDING": true
 
 }
