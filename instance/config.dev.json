@@ -1,4 +1,5 @@
 {
+  "SECRET_KEY": "123",
   "BOOTSTRAP_BOOTSWATCH_THEME": "pulse",
 
   "SQLALCHEMY_DATABASE_URI": "sqlite+pysqlite:///banco_de_dados.sqlite3",

@@ -4,3 +4,6 @@ flask-Minify~=0.42
 SQLAlchemy~=2.0
 Flask-SQLAlchemy~=3.1
 alembic~=1.13.1
+Flask-Login~=0.6.3
+Flask-WTF~=1.2.
+WtForms~=3.1.

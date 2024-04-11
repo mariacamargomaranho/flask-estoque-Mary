@@ -38,7 +38,7 @@
                             <span class="fw-semibold">Acesso ao sistema</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
-                            <li><a class="dropdown-item" href="#">{{ render_icon('box-arrow-in-right') }}&nbsp;Login</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for("auth.login") }}">{{ render_icon('box-arrow-in-right') }}&nbsp;Login</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">{{ render_icon('person') }}&nbsp;Perfil</a></li>
                             <li><a class="dropdown-item" href="#">{{ render_icon('toggles') }}&nbsp;Gerenciamento dos usuários</a></li>
