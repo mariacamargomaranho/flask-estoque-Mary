@@ -4,6 +4,8 @@ import sys
 import uuid
 
 from flask import Flask, render_template
+
+from src.models import User
 from src.modulos import bootstrap, minify, db, login
 from src.utils import existe_esquema, seeding
 
@@ -44,7 +46,7 @@ def create_app(config_filename: str = 'config.dev.json'):
         except ValueError:
             return None
         sentenca = db.select(User).where(User.id == auth_id)
-        usuario = db.session.execute(sentenca).scalar_one_nome()
+        usuario = db.session.execute(sentenca).scalar_one_or_none()
         return usuario
 
 

@@ -16,7 +16,7 @@ class User(db.Model, DataMixin, UserMixin):
     email_normalizado: Mapped[str] = mapped_column(String(256), nullable=False, unique=True, index=True)
     hash_password:Mapped[str] = mapped_column(String(256), nullable=False)
 
-    ativo: Mapped[Boolean] = mapped_column(Boolean, nullable= True, default=False)
+    ativo: Mapped[Boolean] = mapped_column(Boolean, nullable= True, default=True)
 
     @property
     def is_active(self):
@@ -31,11 +31,11 @@ class User(db.Model, DataMixin, UserMixin):
     def set_password(self, senha_aberta):
         self.hash_password = generate_password_hash(senha_aberta)
 
-        def check_password(self,senha_aberta) -> bool:
-            return check_password_hash(self.hash_password, senha_aberta)
+    def check_password(self,senha_aberta) -> bool:
+        return check_password_hash(self.hash_password, senha_aberta)
 
     @classmethod
     def get_by_email(cls, email):
-        sentenca = db.session(User).where(User.email_normalizado == email.lower())
+        sentenca = db.select(User).where(User.email_normalizado == email.lower())
         usuario = db.session.execute(sentenca).scalar_one_or_none()
         return usuario
